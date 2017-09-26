@@ -74,9 +74,16 @@ if __name__ == "__main__":
       setup()
       go_Forward(40, 2)
       time.sleep(1)
+      go_Backward(40, 2)
+      time.sleep(1)
       go_Forward(60, 2)
-      time.sleep(1)      
-      
+      time.sleep(1)  
+      go_Backward(60, 2)
+      time.sleep(1)
+      go_Forward(80, 2)
+      time.sleep(1)  
+      go_Backward(80, 2)
+      time.sleep(1)
    except KeyboardInterrupt:
       go_Forward(0, 1)
       quit()
