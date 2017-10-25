@@ -12,11 +12,11 @@ db = {
     'right_motor_pwm': 37
 }
 
-forward0 = db['left_forward']
-forward1 = db['right_forward']
+left_forward = db['left_forward']
+right_forward = db['right_forward']
 
-backward0 = db['left_backward']
-backward1 = db['right_backward']
+left_backward = db['left_backward']
+right_backward = db['right_backward']
 
 left_motor_a = db['left_motor_a']
 left_motor_b = db['left_motor_b']
