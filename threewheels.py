@@ -7,18 +7,18 @@ GPIO.setwarnings(False)
 
 reverse = lambda x: ~x
 
-forward0 = True
+forward0 = False
 forward1 = False
 
-backward0 = reverse(forward0)
-backward1 = reverse(forward1)
+backward0 = True
+backward1 = True
 
 left_motor_a = 12
 left_motor_b = 11
 left_motor_pwm = 35
 
-right_motor_a = 15
-right_motor_b = 13
+right_motor_a = 31
+right_motor_b = 33
 right_motor_pwm = 37
 
 def left_motor(x):
@@ -76,9 +76,9 @@ def stop():
 try:
     pwm_left.start(0)
     pwm_right.start(0)
-    go_forward(40, 3)
+    go_forward(45, 3)
     sleep(1)
-    go_backward(40, 3)
+    go_backward(45, 3)
     sleep(1)
     stop()
 except KeyboardInterrupt:
