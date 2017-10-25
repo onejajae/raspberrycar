@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 from time import sleep
+from setup import *
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
@@ -7,19 +8,6 @@ GPIO.setwarnings(False)
 
 reverse = lambda x: ~x
 
-forward0 = False
-forward1 = False
-
-backward0 = True
-backward1 = True
-
-left_motor_a = 12
-left_motor_b = 11
-left_motor_pwm = 35
-
-right_motor_a = 31
-right_motor_b = 33
-right_motor_pwm = 37
 
 def left_motor(x):
     if x:
