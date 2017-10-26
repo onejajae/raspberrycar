@@ -66,11 +66,11 @@ class Motor(object):
 
     def go_backward(self, speed):
         if self.backward:
-            GPIO.output(self.pinA, GPIO.LOW)
-            GPIO.output(self.pinB, GPIO.HIGH)
-        else:
             GPIO.output(self.pinA, GPIO.HIGH)
             GPIO.output(self.pinB, GPIO.LOW)
+        else:
+            GPIO.output(self.pinA, GPIO.LOW)
+            GPIO.output(self.pinB, GPIO.HIGH)
         GPIO.output(self.pinPWM, GPIO.HIGH)
         self.PWM.ChangeDutyCycle(speed)
 
