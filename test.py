@@ -17,17 +17,19 @@ db = {
 
 class RaspberryCar(object):
     def __init__(self, db):
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setwarnings(False)
         self.leftMotor = LeftMotor(db)
         self.rightMotor = RightMotor(db)
 
     def go_forward(self, speed, time):
-        self.leftMotor.forward(speed)
-        self.rightMotor.forward(speed)
+        self.leftMotor.go_forward(speed)
+        self.rightMotor.go_forward(speed)
         sleep(time)
 
     def go_backward(self, speed, time):
-        self.leftMotor.backward(speed)
-        self.rightMotor.backward(speed)
+        self.leftMotor.go_backward(speed)
+        self.rightMotor.go_backward(speed)
         sleep(time)
 
     def stop(self):
@@ -51,7 +53,7 @@ class Motor(object):
         self.PWM = GPIO.PWM(self.pinPWM, 100)
         self.PWM.start(0)
 
-    def forward(self, speed):
+    def go_forward(self, speed):
         if self.forward:
             GPIO.output(self.pinA, GPIO.HIGH)
             GPIO.output(self.pinB, GPIO.LOW)
@@ -61,7 +63,7 @@ class Motor(object):
         GPIO.output(self.pinPWM, GPIO.HIGH)
         self.PWM.ChangeDutyCycle(speed)
 
-    def backward(self, speed):
+    def go_backward(self, speed):
         if self.backward:
             GPIO.output(self.pinA, GPIO.LOW)
             GPIO.output(self.pinB, GPIO.HIGH)
