@@ -44,13 +44,13 @@ class Motor(object):
         self.pinPWM = pinPWM
         self.forward = forward
         self.backward = backward
+        self.PWM = GPIO.PWM(self.pinPWM, 100)
         self.setup()
 
     def setup(self):
         GPIO.setup(self.pinA, GPIO.OUT)
         GPIO.setup(self.pinB, GPIO.OUT)
         GPIO.setup(self.PWM, GPIO.OUT)
-        self.PWM = GPIO.PWM(self.pinPWM, 100)
         self.PWM.start(0)
 
     def go_forward(self, speed):
