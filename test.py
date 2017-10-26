@@ -104,7 +104,7 @@ if __name__ == "__main__":
     try:
         myCar.go_forward(45, 2)
         sleep(1)
-        myCar.go_forward(45, 2)
+        myCar.go_backward(45, 2)
         sleep(1)
         myCar.stop()
     except KeyboardInterrupt as e:
