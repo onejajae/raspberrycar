@@ -13,8 +13,8 @@ db = {
     'right_motor_a': 31,
     'right_motor_b': 33,
     'right_motor_pwm': 37,
-    'trig': 16,
-    'echo': 18
+    'trig': 18,
+    'echo': 16
 }
 
 
