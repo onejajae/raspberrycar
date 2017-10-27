@@ -164,7 +164,11 @@ if __name__ == "__main__":
     myCar = RaspberryCar(db)
     try:
         while True:
-            print myCar.get_distance()
+            myCar.any_go_forward(30)
+            if myCar.get_distance() < 25:
+                myCar.stop()
+                break
+        myCar.rightSwingTurn(30, 1.5)
 
     except KeyboardInterrupt as e:
         myCar.stop()
