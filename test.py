@@ -152,7 +152,7 @@ class UltraSonicSonsor:
 if __name__ == "__main__":
     myCar = RaspberryCar(db)
     try:
-        myCar.get_distance()
+        print myCar.get_distance()
     except KeyboardInterrupt as e:
         myCar.stop()
         GPIO.cleanup()
