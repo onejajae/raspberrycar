@@ -30,11 +30,13 @@ class RaspberryCar(object):
         self.leftMotor.go_forward(speed)
         self.rightMotor.go_forward(speed)
         sleep(time)
+        self.stop()
 
     def go_backward(self, speed, time):
         self.leftMotor.go_backward(speed)
         self.rightMotor.go_backward(speed)
         sleep(time)
+        self.stop()
 
     def stop(self):
         self.leftMotor.stop()
@@ -43,20 +45,24 @@ class RaspberryCar(object):
     def leftSwingTurn(self, speed, time):
         self.rightMotor.go_forward(speed)
         sleep(time)
+        self.stop()
 
     def rightSwingTurn(self, speed, time):
         self.leftMotor.go_forward(speed)
         sleep(time)
+        self.stop()
 
     def leftPointTurn(self, speed, time):
         self.rightMotor.go_forward(speed)
         self.leftMotor.go_backward(speed)
         sleep(time)
+        self.stop()
 
     def rightPointTurn(self, speed, time):
         self.leftMotor.go_forward(speed)
         self.rightMotor.go_backward(speed)
         sleep(time)
+        self.stop()
 
     def get_distance(self):
         return self.ultraSonicSensor.getDistance()
