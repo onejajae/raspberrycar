@@ -132,7 +132,7 @@ class UltraSonicSonsor:
 
     def setup(self):
         GPIO.setup(self.trig, GPIO.OUT)
-        GPIO.setup(self.trig, GPIO.IN)
+        GPIO.setup(self.echo, GPIO.IN)
 
     def getDistance(self):
         GPIO.output(self.trig, False)
