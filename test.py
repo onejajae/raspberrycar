@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 from time import sleep
-import time
+from time import time
 
 db = {
     'left_forward': False,
@@ -25,6 +25,10 @@ class RaspberryCar(object):
         self.leftMotor = LeftMotor(db)
         self.rightMotor = RightMotor(db)
         self.ultraSonicSensor = UltraSonicSonsor(db)
+
+    def any_go_forward(self, speed):
+        self.leftMotor.go_forward(speed)
+        self.rightMotor.go_forward(speed)
 
     def go_forward(self, speed, time):
         self.leftMotor.go_forward(speed)
@@ -147,9 +151,9 @@ class UltraSonicSonsor:
         sleep(0.00001)
         GPIO.output(self.trig, False)
         while GPIO.input(self.echo) == 0:
-            pulse_start = time.time()
+            pulse_start = time()
         while GPIO.input(self.echo) == 1:
-            pulse_end = time.time()
+            pulse_end = time()
         pulse_duration = pulse_end - pulse_start
         distance = pulse_duration * 17000
         distance = round(distance, 2)
@@ -159,7 +163,12 @@ class UltraSonicSonsor:
 if __name__ == "__main__":
     myCar = RaspberryCar(db)
     try:
-        myCar.leftPointTurn(30,1)
+        while myCar.get_distance() > 20:
+            myCar.any_go_forward()
+        else:
+            myCar.stop()
+            myCar.rightSwingTurn()
+
     except KeyboardInterrupt as e:
         myCar.stop()
         GPIO.cleanup()
