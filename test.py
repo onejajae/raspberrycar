@@ -28,7 +28,7 @@ class RaspberryCar(object):
 
     def any_go_forward(self, speed):
         self.leftMotor.go_forward(speed)
-        self.rightMotor.go_forward(speed*1.3)
+        self.rightMotor.go_forward(speed*1.25)
 
     def go_forward(self, speed, time):
         self.leftMotor.go_forward(speed)
@@ -168,7 +168,7 @@ if __name__ == "__main__":
             if myCar.get_distance() < 25:
                 myCar.stop()
                 break
-        myCar.rightSwingTurn(30, 1.5)
+        myCar.rightSwingTurn(30, 2)
 
     except KeyboardInterrupt as e:
         myCar.stop()
