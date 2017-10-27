@@ -139,6 +139,7 @@ class UltraSonicSonsor:
         sleep(0.5)
         GPIO.output(self.trig, True)
         sleep(0.00001)
+        GPIO.output(self.trig, False)
         while GPIO.input(self.echo) == 0:
             pulse_start = time.time()
         while GPIO.input(self.echo) == 1:
