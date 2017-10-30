@@ -24,7 +24,7 @@ class RaspberryCar(object):
         GPIO.setwarnings(False)
         self.leftMotor = LeftMotor(db)
         self.rightMotor = RightMotor(db)
-        self.ultraSonicSensor = UltraSonicSonsor(db)
+        self.ultraSonicSensor = UltraSonicSensor(db)
 
     def any_go_forward(self, speed):
         self.leftMotor.go_forward(speed)
@@ -134,7 +134,7 @@ class RightMotor(Motor):
         self.setup()
 
 
-class UltraSonicSonsor:
+class UltraSonicSensor:
     def __init__(self, db):
         self.trig = db['trig']
         self.echo = db['echo']
@@ -165,14 +165,14 @@ if __name__ == "__main__":
     try:
         while True:
             myCar.any_go_forward(30)
-            if myCar.get_distance() < 25:
+            if myCar.get_distance() < 20:
                 myCar.stop()
                 break
         myCar.rightSwingTurn(33, 1)
         sleep(1)
         while True:
             myCar.any_go_forward(30)
-            if myCar.get_distance() < 25:
+            if myCar.get_distance() < 20:
                 myCar.stop()
                 break
         myCar.rightPointTurn(30,1)
