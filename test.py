@@ -178,6 +178,7 @@ if __name__ == "__main__":
         myCar.rightPointTurn(25,1)
         sleep(1)
         myCar.go_forward(30, 1)
+        """
         tmp = raw_input()
         while True:
             myCar.any_go_forward(30)
@@ -194,6 +195,7 @@ if __name__ == "__main__":
         myCar.leftSwingTurn(25, 1)
         sleep(1)
         myCar.go_forward(30, 1)
+        """
     except KeyboardInterrupt as e:
         myCar.stop()
         GPIO.cleanup()
