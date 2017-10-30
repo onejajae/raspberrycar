@@ -168,14 +168,14 @@ if __name__ == "__main__":
             if myCar.get_distance() < 25:
                 myCar.stop()
                 break
-        myCar.rightSwingTurn(30, 2)
+        myCar.rightSwingTurn(25, 2)
         sleep(1)
         while True:
             myCar.any_go_forward(30)
             if myCar.get_distance() < 25:
                 myCar.stop()
                 break
-        myCar.rightPointTurn(30,1)
+        myCar.rightPointTurn(25,1)
         sleep(1)
         myCar.go_forward(30, 1)
         tmp = raw_input()
@@ -184,14 +184,14 @@ if __name__ == "__main__":
             if myCar.get_distance() < 25:
                 myCar.stop()
                 break
-        myCar.leftPointTurn(30, 2)
+        myCar.leftPointTurn(25, 1)
         sleep(1)
         while True:
             myCar.any_go_forward(30)
             if myCar.get_distance() < 25:
                 myCar.stop()
                 break
-        myCar.leftSwingTurn(30, 1)
+        myCar.leftSwingTurn(25, 1)
         sleep(1)
         myCar.go_forward(30, 1)
     except KeyboardInterrupt as e:
