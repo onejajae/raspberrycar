@@ -28,7 +28,7 @@ class RaspberryCar(object):
 
     def any_go_forward(self, speed):
         self.leftMotor.go_forward(speed)
-        self.rightMotor.go_forward(speed*1.09)
+        self.rightMotor.go_forward(speed*1.2)
 
     def go_forward(self, speed, time):
         self.leftMotor.go_forward(speed)
