@@ -168,7 +168,7 @@ if __name__ == "__main__":
             if myCar.get_distance() < 22:
                 myCar.stop()
                 break
-        myCar.leftPointTurn(33, 1)
+        myCar.leftPointTurn(30, 1)
         sleep(1)
         while True:
             myCar.any_go_forward(30)
