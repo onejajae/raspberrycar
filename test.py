@@ -175,9 +175,9 @@ if __name__ == "__main__":
             if myCar.get_distance() < 20:
                 myCar.stop()
                 break
-        myCar.leftSwingTurn(50, 1.5)
+        myCar.leftSwingTurn(55, 1.5)
         sleep(1)
-        myCar.go_forward(40, 1)
+        myCar.go_forward(50, 1)
 
     except KeyboardInterrupt as e:
         myCar.stop()
