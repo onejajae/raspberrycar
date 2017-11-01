@@ -165,37 +165,20 @@ if __name__ == "__main__":
     try:
         while True:
             myCar.any_go_forward(30)
-            if myCar.get_distance() < 20:
-                myCar.stop()
-                break
-        myCar.rightSwingTurn(37, 1)
-        sleep(1)
-        while True:
-            myCar.any_go_forward(30)
-            if myCar.get_distance() < 23:
-                myCar.stop()
-                break
-        myCar.rightPointTurn(30,0.8)
-        sleep(1)
-        myCar.go_forward(50, 2)
-        """
-        tmp = raw_input()
-        while True:
-            myCar.any_go_forward(30)
             if myCar.get_distance() < 25:
                 myCar.stop()
                 break
-        myCar.leftPointTurn(25, 1)
+        myCar.leftPointTurn(37, 1)
         sleep(1)
         while True:
             myCar.any_go_forward(30)
             if myCar.get_distance() < 25:
                 myCar.stop()
                 break
-        myCar.leftSwingTurn(25, 1)
+        myCar.leftSwingTurn(30, 1)
         sleep(1)
         myCar.go_forward(30, 1)
-        """
+
     except KeyboardInterrupt as e:
         myCar.stop()
         GPIO.cleanup()
