@@ -61,23 +61,20 @@ class RaspberryCar(object):
         sleep(time)
         self.stop()
 
-    def get_distance(self):
-        return self.ultraSonicSensor.getDistance()
-
 
 if __name__ == "__main__":
     myCar = RaspberryCar(db)
     try:
         while True:
             myCar.any_go_forward(30)
-            if myCar.get_distance() < 22:
+            if myCar.ultraSonicSensor.getDistance() < 22:
                 myCar.stop()
                 break
         myCar.leftPointTurn(30, 1)
         sleep(1)
         while True:
             myCar.any_go_forward(30)
-            if myCar.get_distance() < 20:
+            if myCar.ultraSonicSensor.getDistance() < 20:
                 myCar.stop()
                 break
         myCar.leftSwingTurn(60, 1.4)
