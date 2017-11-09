@@ -8,6 +8,7 @@ class TrackSensor:
         self.center = db['track_center']
         self.right1 = db['track_right1']
         self.right2 = db['track_right2']
+        self.setup()
 
     def setup(self):
         GPIO.setup(self.left2, GPIO.IN)
