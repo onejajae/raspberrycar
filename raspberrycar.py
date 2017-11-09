@@ -65,22 +65,30 @@ class RaspberryCar(object):
         GPIO.cleanup()
 
     def lineTracing(self):
-        speed=60
+        '''
+        trackSensor.getStatus() = (left2, left1, center, right1, right2)
+        '''
+        speed = 60
+        leftSpeed = speed
+        rightSpeed = speed
         while True:
             self.goForward(speed)
             data = self.trackSensor.getStatus()
             if not(data[1]):
-                speed += 20
-                self.rightMotor.go_forward(speed)
+                rightSpeed += 20
+                self.rightMotor.go_forward(rightSpeed)
             if not(data[0]):
-                speed += 20
-                self.rightMotor.go_forward(speed)
+                rightSpeed += 20
+                self.rightMotor.go_forward(rightSpeed)
             if not(data[3]):
-                speed += 20
-                self.leftMotor.go_forward(speed)
+                leftSpeed += 20
+                self.leftMotor.go_forward(leftSpeed)
             if not(data[4]):
-                speed += 20
-                self.leftMotor.go_forward(speed)
+                leftSpeed += 20
+                self.leftMotor.go_forward(leftSpeed)
+            if not(data[0] and data[1] and data[2] and data[3] and data[4]):
+                self.stop()
+                break
 
 
 if __name__ == "__main__":
@@ -102,9 +110,7 @@ if __name__ == "__main__":
         myCar.leftSwingTurn(60, 1.4)
         sleep(1)
         myCar.go_forward(50, 1)
-        myCar.stop()
-        GPIO.cleanup()
+        myCar.clear()
 
     except KeyboardInterrupt as e:
-        myCar.stop()
-        GPIO.cleanup()
+        myCar.clear()
