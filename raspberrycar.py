@@ -3,7 +3,6 @@ from time import sleep
 from motor import LeftMotor, RightMotor
 from sensors.track import TrackSensor
 from sensors.ultrasonic import UltraSonicSensor
-from setup import db
 
 
 class RaspberryCar(object):
@@ -15,11 +14,11 @@ class RaspberryCar(object):
         self.ultraSonicSensor = UltraSonicSensor(db)
         self.trackSensor = TrackSensor(db)
 
-    def any_go_forward(self, speed):
+    def goForward(self, speed):
         self.leftMotor.go_forward(speed)
         self.rightMotor.go_forward(speed)
 
-    def any_go_backward(self, speed):
+    def goBackward(self, speed):
         self.leftMotor.go_backward(speed)
         self.rightMotor.go_backward(speed)
 
@@ -61,19 +60,42 @@ class RaspberryCar(object):
         sleep(time)
         self.stop()
 
+    def clear(self):
+        self.stop()
+        GPIO.cleanup()
+
+    def lineTracing(self):
+        speed=60
+        while True:
+            self.goForward(speed)
+            data = self.trackSensor.getStatus()
+            if not(data[1]):
+                speed += 20
+                self.rightMotor.go_forward(speed)
+            if not(data[0]):
+                speed += 20
+                self.rightMotor.go_forward(speed)
+            if not(data[3]):
+                speed += 20
+                self.leftMotor.go_forward(speed)
+            if not(data[4]):
+                speed += 20
+                self.leftMotor.go_forward(speed)
+
 
 if __name__ == "__main__":
+    from setup import db
     myCar = RaspberryCar(db)
     try:
         while True:
-            myCar.any_go_forward(30)
+            myCar.goForward(30)
             if myCar.ultraSonicSensor.getDistance() < 22:
                 myCar.stop()
                 break
         myCar.leftPointTurn(30, 1)
         sleep(1)
         while True:
-            myCar.any_go_forward(30)
+            myCar.goForward(30)
             if myCar.ultraSonicSensor.getDistance() < 20:
                 myCar.stop()
                 break
