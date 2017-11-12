@@ -14,6 +14,19 @@ class RaspberryCar(object):
         self.ultraSonicSensor = UltraSonicSensor(db)
         self.trackSensor = TrackSensor(db)
 
+    def differentialForward(self, leftSpeed, rightSpeed):
+        self.leftMotor.go_forward(leftSpeed)
+        self.rightMotor.go_forward(rightSpeed)
+
+    def tracer(self):
+        data = self.trackSensor.getReversedStatus()
+        while not(data[0] and data[1] and data[2] and data[3] and data[4]):
+            speed = 50
+            leftSpeed = speed + data[3] + data[4]
+            rightSpeed = speed + data[1] + data[0]
+            self.differentialForward(leftSpeed, rightSpeed)
+            data = self.trackSensor.getReversedStatus()
+
     def goForward(self, speed):
         self.leftMotor.go_forward(speed)
         self.rightMotor.go_forward(speed)
@@ -68,7 +81,7 @@ class RaspberryCar(object):
         '''
         trackSensor.getStatus() = (left2, left1, center, right1, right2)
         '''
-        speed = 60
+        speed = 50
         leftSpeed = speed
         rightSpeed = speed
         while True:
@@ -78,14 +91,18 @@ class RaspberryCar(object):
                 rightSpeed += 20
                 self.rightMotor.go_forward(rightSpeed)
             if not(data[0]):
-                rightSpeed += 20
+                rightSpeed += 30
                 self.rightMotor.go_forward(rightSpeed)
             if not(data[3]):
                 leftSpeed += 20
                 self.leftMotor.go_forward(leftSpeed)
             if not(data[4]):
-                leftSpeed += 20
+                leftSpeed += 30
                 self.leftMotor.go_forward(leftSpeed)
+            if not(data[2]):
+                leftSpeed = speed
+                rightSpeed = speed
+                self.goForward(speed)
             if not(data[0] and data[1] and data[2] and data[3] and data[4]):
                 self.stop()
                 break

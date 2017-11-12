@@ -24,3 +24,12 @@ class TrackSensor:
         right1 = GPIO.input(self.right1)
         right2 = GPIO.input(self.right2)
         return left2, left1, center, right1, right2
+
+    def getReversedStatus(self):
+        reverse = lambda x: 1-x
+        left2 = reverse(GPIO.input(self.left2)) * 30
+        left1 = reverse(GPIO.input(self.left1)) * 20
+        center = reverse(GPIO.input(self.center))
+        right1 = reverse(GPIO.input(self.right1)) * 20
+        right2 = reverse(GPIO.input(self.right2)) * 30
+        return left2, left1, center, right1, right2
