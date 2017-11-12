@@ -3,6 +3,8 @@ import RPi.GPIO as GPIO
 
 class TrackSensor:
     def __init__(self, db):
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setwarnings(False)
         self.left2 = db['track_left2']
         self.left1 = db['track_left1']
         self.center = db['track_center']
