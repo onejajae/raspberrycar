@@ -6,7 +6,7 @@ class LineTracer(raspberrycar.RaspberryCar):
     def __init__(self, db):
         super(LineTracer, self).__init__(db)
 
-    def lineTracing(self, distance, defaultSpeed):
+    def lineTracing(self, defaultSpeed, distance):
         self.differentialForward(defaultSpeed, defaultSpeed)
         while True:
             dat = self.trackSensor.getReversedStatus()
@@ -21,12 +21,28 @@ class LineTracer(raspberrycar.RaspberryCar):
             self.rightMotor.PWM.ChangeDutyCycle(base_r)
             if l1 and l2 and r1 and r2 and m:
                 break
+            if self.ultraSonicSensor.getDistance() < distance:
+                self.avoidObstacle()
+
+    def avoidObstacle(self):
+        avoidTime = 0.4
+        self.stop()
+        sleep(0.5)
+        self.rightPointTurn(30, avoidTime)
+        self.stop()
+        self.go_forward(30, 1.3)
+        self.stop()
+        sleep(0.5)
+        self.leftPointTurn(30, avoidTime * 2)
+        self.stop()
+        sleep(0.5)
 
 
 if __name__ == '__main__':
     from setup import db
     myCar = LineTracer(db)
     try:
-        myCar.lineTracing(30, 40)
+        myCar.lineTracing(40, 20)
+        myCar.clear()
     except KeyboardInterrupt:
         myCar.clear()
