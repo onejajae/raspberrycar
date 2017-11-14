@@ -25,6 +25,7 @@ class LineTracer(raspberrycar.RaspberryCar):
                 self.avoidObstacle()
 
     def avoidObstacle(self):
+        self.clear()
         avoidTime = 0.4
         self.stop()
         sleep(0.5)
@@ -42,7 +43,9 @@ if __name__ == '__main__':
     from setup import db
     myCar = LineTracer(db)
     try:
-        myCar.lineTracing(40, 20)
-        myCar.clear()
+        #myCar.lineTracing(40, 20)
+        while True:
+            myCar.rightPointTurn(40,1)
+        #myCar.clear()
     except KeyboardInterrupt:
         myCar.clear()
