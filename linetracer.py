@@ -19,9 +19,7 @@ class LineTracer(raspberrycar.RaspberryCar):
             sleep(0.001)
             self.leftMotor.PWM.ChangeDutyCycle(base_l)
             self.rightMotor.PWM.ChangeDutyCycle(base_r)
-            if (l1 + l2 + r1 + r2 + m) <= 1:
-                break
-            elif distance < 25:
+            if l1 and l2 and r1 and r2 and m:
                 break
 
 
