@@ -1,8 +1,8 @@
 db = {
-    'left_forward': False,
+    'left_forward': True,
     'right_forward': False,
     'left_backward': True,
-    'right_backward': True,
+    'right_backward': False,
     'left_motor_a': 12,
     'left_motor_b': 11,
     'left_motor_pwm': 35,
