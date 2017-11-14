@@ -78,7 +78,6 @@ if __name__ == "__main__":
     myCar = RaspberryCar(db)
     try:
         while True:
-            print myCar.ultraSonicSensor.getDistance()
-            sleep(0.5)
+            pass
     except KeyboardInterrupt as e:
         myCar.clear()
