@@ -3,10 +3,8 @@ from time import time
 from time import sleep
 
 
-class UltraSonicSensor:
+class UltraSonicSensor(object):
     def __init__(self, db):
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setwarnings(False)
         self.trig = db['trig']
         self.echo = db['echo']
         self.setup()

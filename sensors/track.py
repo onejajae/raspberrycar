@@ -1,10 +1,8 @@
 import RPi.GPIO as GPIO
 
 
-class TrackSensor:
+class TrackSensor(object):
     def __init__(self, db):
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setwarnings(False)
         self.left2 = db['track_left2']
         self.left1 = db['track_left1']
         self.center = db['track_center']
@@ -29,9 +27,9 @@ class TrackSensor:
 
     def getReversedStatus(self):
         reverse = lambda x: 1-x
-        left2 = reverse(GPIO.input(self.left2)) * 30
-        left1 = reverse(GPIO.input(self.left1)) * 20
+        left2 = reverse(GPIO.input(self.left2))
+        left1 = reverse(GPIO.input(self.left1))
         center = reverse(GPIO.input(self.center))
-        right1 = reverse(GPIO.input(self.right1)) * 20
-        right2 = reverse(GPIO.input(self.right2)) * 30
+        right1 = reverse(GPIO.input(self.right1))
+        right2 = reverse(GPIO.input(self.right2))
         return left2, left1, center, right1, right2
