@@ -78,6 +78,6 @@ if __name__ == "__main__":
     myCar = RaspberryCar(db)
     try:
         while True:
-            pass
+            myCar.rightPointTurn(40,1)
     except KeyboardInterrupt as e:
         myCar.clear()
