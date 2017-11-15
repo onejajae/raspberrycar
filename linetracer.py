@@ -68,7 +68,7 @@ if __name__ == '__main__':
     from setup import db
     myCar = LineTracer(db)
     try:
-        myCar.lineTracing(40, 20)
+        myCar.lineTracing(50, 20)
         myCar.clear()
     except KeyboardInterrupt:
         myCar.clear()
