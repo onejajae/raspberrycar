@@ -52,11 +52,11 @@ class LineTracer(raspberrycar.RaspberryCar):
         self.leftPointTurn(30, avoidTime * 2)
         self.stop()
         sleep(0.5)
+        self.goForward(0)
 
     def lineTracing(self, defaultSpeed, distance):
         self.differentialForward(defaultSpeed, defaultSpeed)
         while self.status:
-            print 1
             if self.ultraSonicSensor.getDistance() < distance:
                 self.avoidObstacle()
                 self.stop()
