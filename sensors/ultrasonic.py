@@ -15,7 +15,7 @@ class UltraSonicSensor(object):
 
     def getDistance(self):
         GPIO.output(self.trig, False)
-        sleep(0.5)
+        sleep(0.1)
         GPIO.output(self.trig, True)
         sleep(0.00001)
         GPIO.output(self.trig, False)
