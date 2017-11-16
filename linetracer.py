@@ -39,6 +39,7 @@ class LineTracer(raspberrycar.RaspberryCar):
             return
 
     def avoidObstacle(self):
+        print 'wall'
         self.stop()
         avoidTime = 0.4
         self.stop()
