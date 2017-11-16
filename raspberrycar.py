@@ -78,6 +78,7 @@ if __name__ == "__main__":
     myCar = RaspberryCar(db)
     try:
         while True:
-            myCar.goForward(50)
+            print myCar.trackSensor.getStatus()
+            sleep(0.5)
     except KeyboardInterrupt as e:
         myCar.clear()
