@@ -38,5 +38,5 @@ db = {
     'track_left1': 32,
     'track_center': 36,
     'track_right1': 38,
-    'track_right2': 40,
+    'track_right2': 26,
 }
