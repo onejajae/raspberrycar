@@ -46,7 +46,7 @@ class LineTracer(raspberrycar.RaspberryCar):
         self.rightPointTurn(30, avoidTime)
         self.stop()
         sleep(0.5)
-        self.go_forward(30, 1.3)
+        self.go_forward(30, 2)
         self.stop()
         sleep(0.5)
         self.leftPointTurn(30, avoidTime * 2)
