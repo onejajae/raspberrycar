@@ -32,7 +32,6 @@ class LineTracer(raspberrycar.RaspberryCar):
         right_change = 0 if r1 else 13 * weight + 0 if r2 else 19 * weight
         base_l, base_r = base_l + left_change - right_change, base_r + right_change - left_change
         sleep(0.001)
-        print base_l, base_r
         self.leftMotor.PWM.ChangeDutyCycle(base_l)
         self.rightMotor.PWM.ChangeDutyCycle(base_r)
         if l1 and l2 and r1 and r2 and m:
