@@ -25,7 +25,7 @@ class LineTracer(raspberrycar.RaspberryCar):
 
     def f(self, defaultSpeed):
         dat = self.trackSensor.getReversedStatus()
-        base_l, base_r = 35, 35
+        base_l, base_r = 50, 50
         l1, l2, r1, r2, m = dat[0], dat[1], dat[4], dat[3], dat[2]
         weight = 0.7 if m else 1
         left_change = 0 if l1 else 13 * weight + 0 if l2 else 19 * weight
