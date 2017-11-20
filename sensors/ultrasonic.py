@@ -27,3 +27,14 @@ class UltraSonicSensor(object):
         distance = pulse_duration * 17000
         distance = round(distance, 2)
         return distance
+
+
+if __name__ == '__main__':
+    try:
+        import setup
+        sensor = UltraSonicSensor(setup.db)
+        while True:
+            print sensor.getDistance()
+            sleep(0.1)
+    except KeyboardInterrupt:
+        GPIO.cleanup()
