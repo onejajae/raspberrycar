@@ -42,9 +42,13 @@ class RaspberryCar(object):
         sleep(time)
         self.stop()
 
-    def stop(self):
+    def stop(self, sec=0):
         self.leftMotor.stop()
         self.rightMotor.stop()
+        if sec:
+            sleep(sec)
+        else:
+            pass
 
     def leftSwingTurn(self, speed, time):
         self.rightMotor.go_forward(speed)
