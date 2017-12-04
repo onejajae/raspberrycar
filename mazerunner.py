@@ -61,7 +61,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
                 self.calibrating()
                 self.stop(0.2)
                 self.rightTurn(30)
-            elif not(self.dat[0] and self.dat[1] and self.dat[2] and self.dat[3] and self.dat[4]):
+            elif not(self.dat[0] and self.dat[2] and self.dat[4]):
                 print 'uturn'
                 self.stop(0.2)
                 self.uTrun(30)
@@ -73,6 +73,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
                 self.leftTurn(30)
             else:
                 print'go'
+                self.differentialForward(40, 40)
                 self.lineTracing()
 
 
@@ -80,10 +81,8 @@ if __name__ == "__main__":
     import setup
     myCar = MazeRunner(setup.db)
     try:
-        myCar.differentialForward(30, 30)
-        while True:
-            myCar.lineTracing()
-        #myCar.clear()
+        myCar.mazeEscaping()
+        myCar.clear()
     except KeyboardInterrupt:
         myCar.clear()
 
