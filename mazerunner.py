@@ -80,6 +80,7 @@ if __name__ == "__main__":
     import setup
     myCar = MazeRunner(setup.db)
     try:
+        myCar.differentialForward(30, 30)
         while True:
             myCar.lineTracing()
         #myCar.clear()
