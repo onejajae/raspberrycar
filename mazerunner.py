@@ -1,6 +1,7 @@
 import raspberrycar
 import time
 
+
 class MazeRunner(raspberrycar.RaspberryCar):
     def __init__(self, db):
         super(MazeRunner, self).__init__(db)
@@ -48,12 +49,8 @@ class MazeRunner(raspberrycar.RaspberryCar):
             self.stop()
 
     def calibrating(self):
-        self.dat = self.trackSensor.getReversedStatus()
-        while not(self.dat[0] and self.dat[1] and self.dat[3] and self.dat[4]):
-            self.rightMotor.go_forward(30)
-            self.leftMotor.go_forward(30)
-        else:
-            self.stop()
+        self.go_forward(30, 0.5)
+        self.stop()
 
     def mazeEscaping(self):
         while True:
@@ -83,8 +80,9 @@ if __name__ == "__main__":
     import setup
     myCar = MazeRunner(setup.db)
     try:
-        myCar.mazeEscaping()
-        myCar.clear()
+        while True:
+            myCar.lineTracing()
+        #myCar.clear()
     except KeyboardInterrupt:
         myCar.clear()
 
