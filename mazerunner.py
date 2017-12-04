@@ -1,5 +1,5 @@
 import raspberrycar
-
+import time
 
 class MazeRunner(raspberrycar.RaspberryCar):
     def __init__(self, db):
@@ -13,8 +13,9 @@ class MazeRunner(raspberrycar.RaspberryCar):
         weight = 0.7 if mid else 1
         left_change = 0 if left else 13 * weight
         right_change = 0 if right else 13 * weight
-        base_l += left_change
-        base_r += right_change
+        base_l += left_change - right_change
+        base_r += right_change -left_change
+        time.sleep(0.001)
         self.leftMotor.PWM.ChangeDutyCycle(base_l)
         self.rightMotor.PWM.ChangeDutyCycle(base_r)
 
