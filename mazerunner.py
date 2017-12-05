@@ -17,7 +17,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
         base_l += left_change - right_change
         base_r += right_change - left_change
         time.sleep(0.001)
-        print base_l, base_r
+        # print base_l, base_r
         self.leftMotor.PWM.ChangeDutyCycle(base_l)
         self.rightMotor.PWM.ChangeDutyCycle(base_r)
 
@@ -74,7 +74,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
                     self.calibrating()
                     self.stop(0.3)
                     self.dat = self.trackSensor.getReversedStatus()
-                    if self.dat[0]:
+                    if not (self.dat[0] or self.dat[1] or self.dat[2] or self.dat[3] or self.dat[4]):
                         print 'left'
                         raw_input("re")
                     else:
