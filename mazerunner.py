@@ -32,7 +32,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
         else:
             print 2, self.dat
             self.stop(0.1)
-        while not(self.dat[2] or self.dat[3]) and not self.dat[4]:
+        while not(self.dat[2] or self.dat[3]) or self.dat[4]:
             print 3
             self.rightMotor.go_backward(speed)
             self.leftMotor.go_forward(speed)
@@ -53,7 +53,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
         else:
             print 2, self.dat
             self.stop(0.1)
-        while not(self.dat[1] or self.dat[2]) and not self.dat[0]:
+        while not(self.dat[1] or self.dat[2]) or self.dat[0]:
             print 3
             self.rightMotor.go_forward(speed)
             self.leftMotor.go_backward(speed)
