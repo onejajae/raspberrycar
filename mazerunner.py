@@ -76,7 +76,12 @@ class MazeRunner(raspberrycar.RaspberryCar):
             self.stop()
 
     def calibrating(self):
-        self.go_forward(40, 0.6)
+        self.goForward(0)
+        t=0
+        while t < 0.7:
+            self.lineTracing()
+            time.sleep(0.1)
+            t += 0.1
         self.stop()
 
     def mazeEscaping(self):
