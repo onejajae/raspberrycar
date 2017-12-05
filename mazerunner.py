@@ -36,7 +36,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
             print 3
             self.rightMotor.go_backward(speed)
             self.leftMotor.go_forward(speed)
-            time.sleep(0.01)
+            time.sleep(0.1)
             self.dat = self.trackSensor.getReversedStatus()
         else:
             print 4, self.dat
@@ -77,7 +77,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
             self.stop()
 
     def calibrating(self):
-        self.go_forward(40, 0.7)
+        self.go_forward(40, 0.6)
         self.stop()
 
     def mazeEscaping(self):
