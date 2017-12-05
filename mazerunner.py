@@ -70,7 +70,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
                 if self.dat[4]:
                     print 'right'
                     self.calibrating()
-                    self.rightTurn()
+                    self.rightTurn(30)
                     raw_input("re")
                 else:
                     self.calibrating()
