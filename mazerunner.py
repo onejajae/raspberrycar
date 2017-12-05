@@ -23,7 +23,8 @@ class MazeRunner(raspberrycar.RaspberryCar):
 
     def rightTurn(self, speed):
         self.dat = self.trackSensor.getReversedStatus()
-        self.rightPointTurn(speed, 0.3)
+        self.rightPointTurn(speed, 0.5)
+        self.stop()
         while not(self.dat[2]):
             self.rightMotor.go_backward(speed)
             self.leftMotor.go_forward(speed)
