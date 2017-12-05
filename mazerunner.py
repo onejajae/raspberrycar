@@ -72,7 +72,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
             self.stop()
 
     def calibrating(self):
-        self.go_forward(30, 0.5)
+        self.go_forward(30, 0.7)
         self.stop()
 
 
