@@ -49,7 +49,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
             self.dat = self.trackSensor.getReversedStatus()
         else:
             print 2
-            self.stop(0.1)
+            self.stop(0.2)
         while not(self.dat[1] or self.dat[2]):
             print 3
             self.rightMotor.go_forward(speed)
@@ -138,7 +138,7 @@ if __name__ == "__main__":
     import setup
     myCar = MazeRunner(setup.db)
     try:
-        myCar.mazeEscaping()
+        myCar.leftPointTurn(15,10)
         myCar.clear()
     except KeyboardInterrupt:
         myCar.clear()
