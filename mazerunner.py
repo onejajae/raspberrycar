@@ -141,7 +141,7 @@ if __name__ == "__main__":
     import setup
     myCar = MazeRunner(setup.db)
     try:
-        myCar.leftPointTurn(15,10)
+        myCar.mazeEscaping()
         myCar.clear()
     except KeyboardInterrupt:
         myCar.clear()
