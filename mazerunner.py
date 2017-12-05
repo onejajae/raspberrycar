@@ -24,22 +24,22 @@ class MazeRunner(raspberrycar.RaspberryCar):
     def rightTurn(self, speed):
         self.dat = self.trackSensor.getReversedStatus()
         while self.dat[1] or self.dat[2] or self.dat[3]:
-            print 3
+            print 1
             self.rightMotor.go_backward(speed)
             self.leftMotor.go_forward(speed)
             time.sleep(0.1)
             self.dat = self.trackSensor.getReversedStatus()
         else:
-            print 4
+            print 2, self.dat
             self.stop(0.1)
         while not(self.dat[2] or self.dat[3]):
-            print 1
+            print 3
             self.rightMotor.go_backward(speed)
             self.leftMotor.go_forward(speed)
             time.sleep(0.01)
             self.dat = self.trackSensor.getReversedStatus()
         else:
-            print 2
+            print 4, self.dat
             self.stop()
 
     def leftTurn(self, speed):
@@ -51,7 +51,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
             time.sleep(0.1)
             self.dat = self.trackSensor.getReversedStatus()
         else:
-            print 2
+            print 2, self.dat
             self.stop(0.2)
         while not(self.dat[1] or self.dat[2]):
             print 3
@@ -60,7 +60,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
             time.sleep(0.1)
             self.dat = self.trackSensor.getReversedStatus()
         else:
-            print 4
+            print 4, self.dat
             self.stop()
 
     def uTrun(self, speed):
