@@ -71,7 +71,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
                 else:
                     print 'left'
                     raw_input("re")
-            elif not (self.dat[0] or self.dat[1] or self.dat[2] or self[3] or self.dat[4]):
+            elif not (self.dat[0] or self.dat[1] or self.dat[2] or self.dat[3] or self.dat[4]):
                 self.stop()
                 print 'uturn'
                 raw_input("re")
