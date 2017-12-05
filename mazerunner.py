@@ -12,8 +12,8 @@ class MazeRunner(raspberrycar.RaspberryCar):
         left, mid, right = self.dat[1], self.dat[2], self.dat[3]
         base_l, base_r = 25, 25
         weight = 0.7 if mid else 1
-        left_change = 0 if left else 13 * weight
-        right_change = 0 if right else 13 * weight
+        left_change = 0 if left else 20 * weight
+        right_change = 0 if right else 20 * weight
         base_l += left_change - right_change
         base_r += right_change - left_change
         time.sleep(0.001)
