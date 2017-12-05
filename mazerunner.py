@@ -25,7 +25,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
         self.dat = self.trackSensor.getReversedStatus()
         self.rightPointTurn(speed+30, 0.5)
         self.stop(0.1)
-        while not(self.dat[2]):
+        while not(self.dat[2] or self.dat[3]):
             print 1
             self.rightMotor.go_backward(speed)
             self.leftMotor.go_forward(speed)
@@ -37,7 +37,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
     def leftTurn(self, speed):
         self.dat = self.trackSensor.getReversedStatus()
         self.leftPointTurn(speed, 0.3)
-        while not(self.dat[2]):
+        while not(self.dat[1] or self.dat[2]):
             print 1
             self.rightMotor.go_forward(speed)
             self.leftMotor.go_backward(speed)
