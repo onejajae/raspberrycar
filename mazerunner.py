@@ -56,6 +56,33 @@ class MazeRunner(raspberrycar.RaspberryCar):
         self.stop()
 
     def mazeEscaping(self):
+        f = lambda f: f[0] + f[1] + f[2] + f[3] + f[4]
+        while True:
+            dat = self.trackSensor.getReversedStatus()
+            b_c = f(dat)
+            if b_c == 0:
+                print dat
+                raw_input('uturn')
+            elif b_c > 2 and (dat[0] or dat[4]):
+                time.sleep(2.5)
+                self.stop()
+                flag = 1 * dat[0] + 2 * dat[4]
+                print dat, 'find turn'
+                # flag 1: left, 2: right, 3: two
+                if flag == 1:
+                    print dat
+                    raw_input('left')
+                elif flag == 2:
+                    print dat
+                    raw_input('right')
+                elif flag == 3:
+                    print dat
+                    raw_input('right')
+            else:
+                self.lineTracing()
+                
+"""
+    def mazeEscaping(self):
         self.differentialForward(20, 20)
         while True:
             self.dat = self.trackSensor.getReversedStatus()
@@ -75,7 +102,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
                 self.stop()
                 print 'uturn'
                 raw_input("re")
-
+"""
 
 
 
