@@ -69,6 +69,8 @@ class MazeRunner(raspberrycar.RaspberryCar):
                 print self.dat[0], self.dat[4]
                 if self.dat[4]:
                     print 'right'
+                    self.calibrating()
+                    self.rightTurn()
                     raw_input("re")
                 else:
                     self.calibrating()
@@ -76,15 +78,15 @@ class MazeRunner(raspberrycar.RaspberryCar):
                     self.dat = self.trackSensor.getReversedStatus()
                     if not (self.dat[0] or self.dat[1] or self.dat[2] or self.dat[3] or self.dat[4]):
                         print 'left'
+                        self.leftTurn(30)
                         raw_input("re")
                     else:
                         continue
             elif not (self.dat[0] or self.dat[1] or self.dat[2] or self.dat[3] or self.dat[4]):
                 self.stop()
                 print 'uturn'
+                self.uTrun(30)
                 raw_input("re")
-
-
 
 
 """
