@@ -56,9 +56,9 @@ class MazeRunner(raspberrycar.RaspberryCar):
         self.stop()
 
     def mazeEscaping(self):
+        self.differentialForward(20, 20)
         while True:
             self.dat = self.trackSensor.getReversedStatus()
-            self.differentialForward(20, 20)
             self.lineTracing()
             if self.dat[4] or self.dat[0]:
                 print self.dat[0], self.dat[4]
