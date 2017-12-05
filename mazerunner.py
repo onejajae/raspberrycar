@@ -94,7 +94,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
                     print 'right'
                     self.calibrating()
                     self.goForward(0)
-                    self.rightTurn(15)
+                    self.rightTurn(25)
                     raw_input("re")
                     self.goForward(0)
                 else:
@@ -104,7 +104,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
                     if not (self.dat[0] or self.dat[1] or self.dat[2] or self.dat[3] or self.dat[4]):
                         print 'left'
                         self.goForward(0)
-                        self.leftTurn(15)
+                        self.leftTurn(25)
                         raw_input("re")
                         self.goForward(0)
                     else:
