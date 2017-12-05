@@ -62,7 +62,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
             self.lineTracing()
             if self.dat[4] or self.dat[0]:
                 print self.dat[0], self.dat[4]
-                self.stop()
+                self.stop(0.3)
                 self.dat = self.trackSensor.getReversedStatus()
                 if self.dat[4]:
                     print 'right'
