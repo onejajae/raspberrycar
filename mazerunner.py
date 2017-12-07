@@ -24,7 +24,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
     def rightTurn(self, speed):
         self.dat = self.trackSensor.getReversedStatus()
         while self.dat[1] or self.dat[2] or self.dat[3]:
-            print 1
+            print 1, self.dat
             self.rightMotor.go_backward(speed)
             self.leftMotor.go_forward(speed)
             time.sleep(0.1)
@@ -32,15 +32,27 @@ class MazeRunner(raspberrycar.RaspberryCar):
         else:
             print 2, self.dat
             self.stop(0.1)
+        self.dat = self.trackSensor.getReversedStatus()
         while not(self.dat[2] or self.dat[3]) or self.dat[4]:
-            print 3
+            print 3, self.dat
             self.rightMotor.go_backward(speed-5)
             self.leftMotor.go_forward(speed-5)
             time.sleep(0.1)
             self.dat = self.trackSensor.getReversedStatus()
         else:
             print 4, self.dat
-            self.stop()
+            self.stop(0.1)
+        self.dat = self.trackSensor.getReversedStatus()
+        while not(self.dat[1] or self.dat[2] or self.dat[3]):
+            print 5, self.dat
+            self.rightMotor.go_forward(speed - 10)
+            self.leftMotor.go_backward(speed - 10)
+            time.sleep(0.1)
+            self.dat = self.trackSensor.getReversedStatus()
+        else:
+            print 6, self.dat
+            self.stop(0.1)
+        self.dat = self.trackSensor.getReversedStatus()
 
     def leftTurn(self, speed):
         self.dat = self.trackSensor.getReversedStatus()
@@ -53,6 +65,7 @@ class MazeRunner(raspberrycar.RaspberryCar):
         else:
             print 2, self.dat
             self.stop(0.1)
+        self.dat = self.trackSensor.getReversedStatus()
         while not(self.dat[1] or self.dat[2]) or self.dat[0]:
             print 3
             self.rightMotor.go_forward(speed)
@@ -61,19 +74,41 @@ class MazeRunner(raspberrycar.RaspberryCar):
             self.dat = self.trackSensor.getReversedStatus()
         else:
             print 4, self.dat
-            self.stop()
+            self.stop(0.1)
+        self.dat = self.trackSensor.getReversedStatus()
+        while not(self.dat[1] or self.dat[2] or self.dat[3]):
+            print 5, self.dat
+            self.rightMotor.go_backward(speed - 10)
+            self.leftMotor.go_forward(speed - 10)
+            time.sleep(0.1)
+            self.dat = self.trackSensor.getReversedStatus()
+        else:
+            print 6, self.dat
+            self.stop(0.1)
+        self.dat = self.trackSensor.getReversedStatus()
 
     def uTrun(self, speed):
         self.dat = self.trackSensor.getReversedStatus()
         while not (self.dat[2]):
-            print 1
+            print 1, self.dat
             self.rightMotor.go_forward(speed)
             self.leftMotor.go_backward(speed)
             time.sleep(0.1)
             self.dat = self.trackSensor.getReversedStatus()
         else:
-            print 2
-            self.stop()
+            print 2, self.dat
+            self.stop(0.1)
+        while not(self.dat[1] or self.dat[2] or self.dat[3]):
+            print 5, self.dat
+            self.rightMotor.go_backward(speed - 10)
+            self.leftMotor.go_forward(speed - 10)
+            time.sleep(0.1)
+            self.dat = self.trackSensor.getReversedStatus()
+        else:
+            print 6, self.dat
+            self.stop(0.1)
+        self.dat = self.trackSensor.getReversedStatus()
+
 
     def calibrating(self):
         self.goForward(0)

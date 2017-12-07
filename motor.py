@@ -39,8 +39,8 @@ class Motor(object):
         self.PWM.ChangeDutyCycle(speed)
 
     def stop(self):
-        GPIO.output(self.pinPWM, GPIO.LOW)
         self.PWM.ChangeDutyCycle(0)
+        GPIO.output(self.pinPWM, GPIO.LOW)
 
 
 class LeftMotor(Motor):
