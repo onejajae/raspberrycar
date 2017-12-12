@@ -5,15 +5,27 @@ from time import sleep
 
 class UltraSonicSensor(object):
     def __init__(self, db):
+        """
+        setting ultrasonic sensor's pin nums to variable.
+        :param db: setup.py's pin numbers
+        """
         self.trig = db['trig']
         self.echo = db['echo']
         self.setup()
 
     def setup(self):
+        """
+        Just setup the ultrasonic sensor using pin numbers.
+        :return:
+        """
         GPIO.setup(self.trig, GPIO.OUT)
         GPIO.setup(self.echo, GPIO.IN)
 
     def getDistance(self):
+        """
+        this code can measure distance between obstacle and machine
+        :return: the distance between obstacle and machine
+        """
         GPIO.output(self.trig, False)
         sleep(0.15)
         GPIO.output(self.trig, True)
